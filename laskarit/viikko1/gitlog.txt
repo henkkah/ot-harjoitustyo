@@ -1,0 +1,103 @@
+commit b2eb72ee11464a3e991da1db2174117089b0984a
+Author: Henrik Harjula <henrik.harjula@outlook.com>
+Date:   Fri Mar 19 11:11:14 2021 +0200
+
+    commit
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 97d43310dea5eae42e688ec908c600973ab8d7f3
+Author: Henrik Harjula <henrik.harjula@outlook.com>
+Date:   Fri Mar 19 11:06:51 2021 +0200
+
+    uusi tiedostoja-hakemisto
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 88945dd7876ca4aefc2b8ca4479374651e7cac0b
+Author: Henrik Harjula <henrik.harjula@outlook.com>
+Date:   Fri Mar 19 10:59:52 2021 +0200
+
+    muutoksia
+
+ eka.txt    | 2 +-
+ kolmas.txt | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+commit 5ae67002408e743e8515d1a66b14a09e0a490390
+Author: Henrik Harjula <henrik.harjula@outlook.com>
+Date:   Fri Mar 19 10:58:08 2021 +0200
+
+    uudelleennimetty
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 709f7ee828baf49ca2b7e1f2487c925a951ddf56
+Author: Henrik Harjula <henrik.harjula@outlook.com>
+Date:   Fri Mar 19 10:56:22 2021 +0200
+
+    tiedosto poistettu
+
+ toinen.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 69b1252173836ae029ed96934a31e1754bc29a51
+Author: Henrik Harjula <henrik.harjula@outlook.com>
+Date:   Fri Mar 19 10:53:16 2021 +0200
+
+    muutettu tiedostoa
+
+ tiedosto.txt | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+commit 57c79693e48b5f442911d8e90ff621a4e0fc3bff
+Author: Henrik Harjula <henrik.harjula@outlook.com>
+Date:   Fri Mar 19 10:52:18 2021 +0200
+
+    paljon tekstiä lisätty
+
+ tiedosto.txt | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+commit 3761706c5a92d426d94a570a34c3185780647e1e
+Author: Henrik Harjula <henrik.harjula@outlook.com>
+Date:   Fri Mar 19 10:37:25 2021 +0200
+
+    stuff-hakemisto
+
+ stuff/jokin_tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 53b9b12bac1bb7c52a8425bccff9c3b81d94fd3c
+Author: Henrik Harjula <henrik.harjula@outlook.com>
+Date:   Fri Mar 19 10:36:19 2021 +0200
+
+    kolmas tiedosto
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit dfaba28ec47eeb87e1f51b8eb8a90defe1fe59f6
+Author: Henrik Harjula <henrik.harjula@outlook.com>
+Date:   Fri Mar 19 10:25:45 2021 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 9ff0b3535bb022473d44e2113eedc6d055877b5a
+Author: Henrik Harjula <henrik.harjula@outlook.com>
+Date:   Fri Mar 19 10:23:12 2021 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
