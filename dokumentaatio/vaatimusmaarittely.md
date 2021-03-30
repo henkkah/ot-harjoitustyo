@@ -4,18 +4,18 @@
 Budjetointisovellus
 
 ## Sovelluksen tarkoitus
-Sovelluksen käyttäjä voi budjetoida henkilökohtaisen taloutensa tulot ja menot sekä varat ja velat.
+Sovelluksen käyttäjä voi budjetoida henkilökohtaisen taloutensa tulot ja menot sekä varat ja velat.  
 Sovellukseen kirjaudutaan, minkä ansiosta eri käyttäjillä on omat budjettinsa.
 
 ## Käyttäjät
-Sovellusta käyttävät "normaalikäyttäjät".
+Sovellusta käyttävät "normaalikäyttäjät".  
 Lisäksi sovelluksessa on "pääkäyttäjä"-rooli, jota järjestelmän ylläpitäjä käyttää tarvittaessa.
 
 ## Käyttöliittymäluonnos
-Aluksi sovellukseen kirjaudutaan käyttäjätunnuksella.
-Kirjauduttuaan käyttäjä näkee näkymän luomastaan budjetista.
-Alhaalla on nappi, josta pääsee lisäämään tai poistamaan budjettirivejä, tai muokkaamaan olemassaolevia rivejä.
-<img src="https://github.com/henkkah/ot-harjoitustyo/blob/master/dokumentaatio/kayttoliittymaluonnos.PNG" width="750">
+Aluksi sovellukseen kirjaudutaan käyttäjätunnuksella.  
+Kirjauduttuaan käyttäjä näkee näkymän luomastaan budjetista.  
+Alhaalla on nappi, josta pääsee lisäämään tai poistamaan budjettirivejä, tai muokkaamaan olemassaolevia rivejä.  
+<img src="https://github.com/henkkah/ot-harjoitustyo/blob/master/dokumentaatio/kayttoliittymaluonnos.PNG" width="500">
 
 ## Sovelluksen toiminnallisuus
 ### Alkunäkymä
