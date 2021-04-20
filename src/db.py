@@ -1,6 +1,6 @@
 import sqlite3
 
-def start_db():
+def open_db():
     db = sqlite3.connect("budget.db")
     db.isolation_level = None
 

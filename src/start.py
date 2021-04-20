@@ -1,5 +1,5 @@
-from db/db import start_db
-from ui/tui import run_login_ui
+from db import open_db
+from tui import run_login_ui
 
-db = start_db()
+db = open_db()
 run_login_ui(db)
