@@ -20,13 +20,13 @@ Alhaalla on nappi, josta pääsee lisäämään tai poistamaan budjettirivejä, 
 ## Sovelluksen toiminnallisuus
 ### Alkunäkymä
 - Käyttäjätunnuksen luominen
-    - Jos käyttäjällä ei ole vielä tunnusta
-    - Käyttäjätunnukseksi ei voi valita olemassaolevaa tunnusta
+    - Jos käyttäjällä ei ole vielä tunnusta - tehty
+    - Käyttäjätunnukseksi ei voi valita olemassaolevaa tunnusta - tehty
 - Sovellukseen kirjautuminen
-    - Käyttäjätunnuksella
+    - Käyttäjätunnuksella - tehty
 ### Päänäkymä
-- Käyttäjä näkee näkymän budjetoimistaan tuloista ja menoista, sekä varoista ja veloista.
-- Alhaalla on nappeja, josta pääsee lisäämään tai poistamaan budjettirivejä.
+- Käyttäjä näkee näkymän budjetoimistaan tuloista ja menoista, sekä varoista ja veloista. - tehty
+- Alhaalla on nappeja, josta pääsee lisäämään tai poistamaan budjettirivejä. - tehty
 - Sovelluksesta pääsee kirjautumaan ulos.
 
 ## Jatkokehitysideoita

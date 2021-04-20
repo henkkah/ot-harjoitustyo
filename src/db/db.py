@@ -17,14 +17,3 @@ def start_db():
         pass
     
     return db
-
-#####db.execute("CREATE TABLE Tuotteet (id INTEGER PRIMARY KEY, nimi TEXT, hinta INTEGER)")
-
-#tulos = db.execute("INSERT INTO Tuotteet (nimi, hinta) VALUES ('lanttu', 4)")
-#print(tulos.lastrowid)
-
-#tuotteet = db.execute("SELECT nimi, hinta FROM Tuotteet").fetchall()
-#hinta = db.execute("SELECT MAX(hinta) FROM Tuotteet").fetchone()
-
-#hinta = db.execute("SELECT hinta FROM Tuotteet WHERE nimi=?", [nimi]).fetchone()
-#db.execute("INSERT INTO Tuotteet (nimi, hinta) VALUES (?, ?)", [nimi, hinta])
