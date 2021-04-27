@@ -23,11 +23,12 @@ Alhaalla on nappi, josta pääsee lisäämään tai poistamaan budjettirivejä, 
     - Jos käyttäjällä ei ole vielä tunnusta - tehty
     - Käyttäjätunnukseksi ei voi valita olemassaolevaa tunnusta - tehty
 - Sovellukseen kirjautuminen
-    - Käyttäjätunnuksella - tehty
+    - Käyttäjätunnuksella sekä salasanalla - tehty
 ### Päänäkymä
 - Käyttäjä näkee näkymän budjetoimistaan tuloista ja menoista, sekä varoista ja veloista. - tehty
+- Lisäksi näkyy yhteenveto- ja tilastotietoa. - tehty
 - Alhaalla on nappeja, josta pääsee lisäämään tai poistamaan budjettirivejä. - tehty
-- Sovelluksesta pääsee kirjautumaan ulos.
+- Sovelluksesta pääsee kirjautumaan ulos. - tehty
 
 ## Jatkokehitysideoita
 Mikäli aikaa riittää, sovellusta kehitetään esim:
@@ -37,4 +38,3 @@ Mikäli aikaa riittää, sovellusta kehitetään esim:
 - Mahdollisuus olemassaolevien rivien muokkaamiseen
 - Budjettirivien yhteyteen kommentointiominaisuus, eli tiettyä budjettiriviä voisi kommentoida
 - Toiminnallisuus useamman budjetin luomiseen per käyttäjä
-- Autentikointi sekä käyttäjätunnuksella että salasanalla

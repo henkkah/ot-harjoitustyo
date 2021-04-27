@@ -6,9 +6,11 @@ from logic import add_new_budget_row
 from logic import delete_existing_budget_row
 from logic import printable_budget_by_group
 from logic import printable_budget_by_group_with_ids
+from logic import calculate_net
+from db import get_budgets_by_group
 
-# This text-based user interface is used in the initial phase in developing the app
-# Later, graphical UI is developed
+# This text user interface (tui) is used in the initial phase in developing the app.
+# Later, graphical user interface (gui) is developed.
 
 def run_login_ui(db):
     cmd = ask_login_command()
@@ -27,16 +29,12 @@ def run_login_ui(db):
         exit()
     
 def run_budget_ui(db, userid):
-    budget_items = db.execute("SELECT * FROM BudgetItems WHERE userid=?", [userid]).fetchall()
-    budget_items = [(item[3], item[1], item[2], item[0]) for item in budget_items] # Items ordered: Classification, Name, Amount, Id
+    revenues, expenses, assets, liabilities = get_budgets_by_group(db, userid)
     
-    revenues = [(item[1], item[2], item[3]) for item in budget_items if item[0] == "Tulot"]
-    expenses = [(item[1], item[2], item[3]) for item in budget_items if item[0] == "Menot"]
-    assets = [(item[1], item[2], item[3]) for item in budget_items if item[0] == "Varat"]
-    liabilities = [(item[1], item[2], item[3]) for item in budget_items if item[0] == "Velat"]
-
-    print("---Tämänhetkinen BUDJETTI---")
+    print("\n---Tämänhetkinen BUDJETTI---\n")
     [print(printable_budget_by_group(group, item)) for (group, item) in [("Tulot", revenues), ("Menot", expenses), ("Varat", assets), ("Velat", liabilities)]]
+    print("Nettotulot:", calculate_net(revenues, expenses))
+    print("Nettovarat:", calculate_net(assets, liabilities) + "\n")
 
     while True:
         cmd = ask_budget_command()
@@ -53,8 +51,10 @@ def run_budget_ui(db, userid):
                 elif classification == "Velat":
                     liabilities.append((name, amount, budget_id))
                 
-                print("---Tämänhetkinen BUDJETTI---")
+                print("\n---Tämänhetkinen BUDJETTI---\n")
                 [print(printable_budget_by_group(group, item)) for (group, item) in [("Tulot", revenues), ("Menot", expenses), ("Varat", assets), ("Velat", liabilities)]]
+                print("Nettotulot:", calculate_net(revenues, expenses))
+                print("Nettovarat:", calculate_net(assets, liabilities) + "\n")
         
         elif cmd == "2":
             print("---Budjettirivit ja id:t---")
@@ -71,8 +71,10 @@ def run_budget_ui(db, userid):
                 elif classification == "Velat":
                     liabilities = [(item[0], item[1], item[2]) for item in liabilities if item[2] != int(remove_id)]
                 
-                print("---Tämänhetkinen BUDJETTI---")
+                print("\n---Tämänhetkinen BUDJETTI---\n")
                 [print(printable_budget_by_group(group, item)) for (group, item) in [("Tulot", revenues), ("Menot", expenses), ("Varat", assets), ("Velat", liabilities)]]
+                print("Nettotulot:", calculate_net(revenues, expenses))
+                print("Nettovarat:", calculate_net(assets, liabilities) + "\n")
 
         elif cmd == "3":
             run_login_ui(db)
