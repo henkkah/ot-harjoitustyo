@@ -6,7 +6,7 @@ Sovellukseen kirjaudutaan, minkä ansiosta eri käyttäjillä on omat budjettins
 [Vaatimusmäärittely](https://github.com/henkkah/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)  
 [Arkkitehtuuri](https://github.com/henkkah/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)  
 [Työaikakirjanpito](https://github.com/henkkah/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)  
-[GitHub Release]()  
+[GitHub Release](https://github.com/henkkah/ot-harjoitustyo/releases/tag/viikko5)  
 
 ## Käyttöohje:
 Ohjelman käynnistys: "poetry run invoke start"  
