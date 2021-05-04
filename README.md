@@ -5,6 +5,7 @@ Sovellukseen kirjaudutaan, minkä ansiosta eri käyttäjillä on omat budjettins
 ## Linkit:
 [Vaatimusmäärittely](https://github.com/henkkah/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)  
 [Arkkitehtuuri](https://github.com/henkkah/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)  
+[Käyttöohje](https://github.com/henkkah/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)  
 [Työaikakirjanpito](https://github.com/henkkah/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)  
 [GitHub Release](https://github.com/henkkah/ot-harjoitustyo/releases/tag/viikko5)  
 

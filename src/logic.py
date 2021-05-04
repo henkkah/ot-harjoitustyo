@@ -4,9 +4,18 @@ from db import search_for_username
 from db import add_new_user
 from db import add_new_budget_row_to_db
 from db import get_classification_of_budget_item
+from db import modify_budget_row
 from db import delete_budget_row
 
 def ask_login_command(cmd=""):
+    """Asks command from user in login view.
+    
+    Asks command until user gives a valid input (1, 2 or 3).
+
+    Returns:
+        Command given by user (1, 2 or 3).
+    """
+    
     cmd_given = False
     while not cmd_given:
         cmd = input("1 (Olemassaoleva käyttäjä) - 2 (Uusi käyttäjä) - 3 (Sulje sovellus): ")
@@ -17,16 +26,35 @@ def ask_login_command(cmd=""):
     return cmd
 
 def ask_budget_command(cmd=""):
+    """Asks command from user in budget view.
+    
+    Asks command until user gives a valid input (1, 2, 3 or 4).
+
+    Returns:
+        Command given by user (1, 2, 3 or 4).
+    """
+    
     cmd_given = False
     while not cmd_given:
-        cmd = input("1 (Lisää budjettirivi) - 2 (Poista budjettirivi) - 3 (Kirjaudu ulos): ")
-        if cmd == "1" or cmd == "2" or cmd == "3":
+        cmd = input("1 (Lisää budjettirivi) - 2 (Muokkaa budjettiriviä) - 3 (Poista budjettirivi) - 4 (Kirjaudu ulos): ")
+        if cmd == "1" or cmd == "2" or cmd == "3" or cmd == "4":
             cmd_given = True
         else:
-            print("Anna komento 1, 2 tai 3")
+            print("Anna komento 1, 2, 3 tai 4")
     return cmd
 
 def handle_existing_user(db, username="", password=""):
+    """Asks username from the user and checks that username exists in the database.
+
+    Asks also password of the user. Checks that password is correct for the corresponding username.
+
+    Args:
+        db: database where data is stored
+    
+    Returns:
+        True (if user was authenticated successfully) & userid (of the existing user).
+    """
+    
     username_given = False
     while not username_given:
         username = input("Anna käyttäjätunnus: ")
@@ -46,6 +74,17 @@ def handle_existing_user(db, username="", password=""):
     return (True, userid)
 
 def handle_new_user(db, username="", password=""):
+    """Asks username from the user and checks that username does not exist in the database.
+
+    Asks also password of the user. After this, creates new user to the database.
+
+    Args:
+        db: database where data is stored
+    
+    Returns:
+        True (if user was authenticated successfully) & userid (of the new user).
+    """
+    
     username_unique = False
     while not username_unique:
         username = input("Luo käyttäjätunnus: ")
@@ -62,7 +101,24 @@ def handle_new_user(db, username="", password=""):
     
     return (True, userid)
 
-def add_new_budget_row(db, userid):
+def add_new_budget_row(db, userid, classification="", name="", amount=""):
+    """Asks classification, budget item name and budget sum from the user until user gives valid input.
+
+    After this, inserts new budget row with the given input to the database.
+
+    Args:
+        db: database where data is stored
+        userid: id of the user currently handled
+
+    Returns:
+        (True, classification, name, amount, budget_id)
+        - True, if new budget row was added successfully
+        - classification of the new budget row
+        - name of the budget item
+        - amount of the budget row (budget sum)
+        - budget_id (id of the inserted budget row)
+    """
+    
     class_given = False
     while not class_given:
         classification = input("Anna luokka (Tulot/Menot/Varat/Velat): ") # To be developed: Chosen from dropdown list - cannot give incorrect value
@@ -87,7 +143,60 @@ def add_new_budget_row(db, userid):
     
     return (True, classification, name, amount, budget_id)
 
+def modify_existing_budget_row(db, userid):
+    """Asks budget row id and new amount from the user until user gives valid input.
+
+    After this, modifies corresponding budget row in the database.
+
+    Args:
+        db: database where data is stored
+        userid: id of the user currently handled
+
+    Returns:
+        (True, classification, modify_id, new_amount)
+        - True, if modified budget row was modified successfully
+        - classification of the modified budget row
+        - modify_id (id of the modified budget row)
+        - new_amount of the modified budget row (budget sum)
+    """
+    
+    id_valid = False
+    while not id_valid:
+        modify_id = input("Anna rivin id-numero jota haluat muokata: ")
+        try:
+            classification = get_classification_of_budget_item(db, userid, int(modify_id))
+            id_valid = True
+        except:
+            print("Et antanut oikeaa id:tä")
+    
+    amount_valid = False
+    while not amount_valid:
+        new_amount = input("Anna uusi budjettisumma: ")
+        try:
+            new_amount = int(new_amount)
+            amount_valid = True
+        except:
+            print("Et antanut budjettisummaa oikeassa muodossa")
+    
+    modify_budget_row(db, userid, int(modify_id), new_amount)
+    return (True, classification, modify_id, new_amount)
+
 def delete_existing_budget_row(db, userid):
+    """Asks budget row id and new amount from the user until user gives valid input.
+
+    After this, modifies corresponding budget row in the database.
+
+    Args:
+        db: database where data is stored
+        userid: id of the user currently handled
+
+    Returns:
+        (True, classification, remove_id)
+        - True, if budget row was removed successfully
+        - classification of the removed budget row
+        - remove_id (id of the removed budget row)
+    """
+    
     id_valid = False
     while not id_valid:
         remove_id = input("Anna rivin id-numero jonka haluat poistaa: ")
@@ -101,6 +210,16 @@ def delete_existing_budget_row(db, userid):
     return (True, classification, remove_id)
 
 def printable_budget_by_group(group, items):
+    """Modifies given data into printable format.
+
+    Args:
+        group: ["Tulot", "Menot", "Varat", "Velat"]
+        items: data structures of revenues, expenses, assets and liabilities
+
+    Returns:
+        Given data in printable format.
+    """
+    
     result = ""
     result += group.upper() + ":\n"
     items = sort_budget_items_by_amount(items)
@@ -116,6 +235,16 @@ def printable_budget_by_group(group, items):
     return result
 
 def printable_budget_by_group_with_ids(group, items):
+    """Modifies given data into printable format with budget row id's.
+
+    Args:
+        group: ["Tulot", "Menot", "Varat", "Velat"]
+        items: data structures of revenues, expenses, assets and liabilities
+
+    Returns:
+        Given data in printable format with budget row id's.
+    """
+    
     result = ""
     result += group.upper() + ":\n"
     items = sort_budget_items_by_amount(items)
@@ -123,11 +252,29 @@ def printable_budget_by_group_with_ids(group, items):
         result += item[0] + max(1, (20-len(item[0])))*" " + str(item[1]) + " (id: " + str(item[2]) + ")\n"
     return result
 
-# Sorts items from highest budget amount to lowest budget amount
 def sort_budget_items_by_amount(items):
+    """Sorts items from highest budget amount to lowest budget amount.
+
+    Args:
+        items: data structures of revenues, expenses, assets and liabilities
+
+    Returns:
+        Given data sorted by amounts from highest to lowest.
+    """
+    
     return sorted(items, key=lambda x: x[1], reverse=True)
 
 def calculate_net(first, second):
+    """Calculates net amount from the two given input data structures.
+
+    Args:
+        first: first data structure (revenues, expenses, assets or liabilities)
+        second: second data structure (revenues, expenses, assets or liabilities)
+
+    Returns:
+        Net amount from the two given data structures. Also informs whether first or second group has higher total amount.
+    """
+    
     f_amounts = [item[1] for item in first]
     s_amounts = [item[1] for item in second]
     f_sum = sum(f_amounts)

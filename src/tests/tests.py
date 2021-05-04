@@ -74,3 +74,13 @@ class TestBudgetApp(unittest.TestCase):
         remove_id = add_new_budget_row_to_db(self.db, "Ruoka", 350, "Menot", self.testuser_userid).lastrowid
         db.execute("DELETE FROM BudgetItems WHERE userid=? AND id=?", [self.testyser_userid, remove_id])
         self.assertNotEqual(self.db.execute("SELECT name, amount, classification FROM BudgetItems WHERE name=? and amount=? and classification=?", ["Ruoka", 350, "Menot"]).fetchall(), ("Ruoka", 350, "Menot"))
+
+    def test_modify_existing_budget_row_with_correct_input(self):
+        modify_id = add_new_budget_row_to_db(self.db, "Ruoka", 350, "Menot", self.testuser_userid).lastrowid
+        db.execute("UPDATE BudgetItems SET amount=? WHERE userid=? AND id=?", [new_amount, userid, modify_id])
+        self.assertEqual(self.db.execute("SELECT name, amount, classification FROM BudgetItems WHERE name=? and amount=? and classification=?", ["Ruoka", 350, "Menot"]).fetchall(), ("Ruoka", 350, "Menot"))
+
+    def test_modify_existing_budget_row_with_incorrect_input(self):
+        modify_id = add_new_budget_row_to_db(self.db, "Ruoka", "Virhe", "Menot", self.testuser_userid).lastrowid
+        db.execute("UPDATE BudgetItems SET amount=? WHERE userid=? AND id=?", [new_amount, userid, modify_id])
+        self.assertNotEqual(self.db.execute("SELECT name, amount, classification FROM BudgetItems WHERE name=? and amount=? and classification=?", ["Ruoka", "Virhe", "Menot"]).fetchall(), ("Ruoka", "Virhe", "Menot"))

@@ -28,6 +28,7 @@ Alhaalla on nappi, josta pääsee lisäämään tai poistamaan budjettirivejä, 
 - Käyttäjä näkee näkymän budjetoimistaan tuloista ja menoista, sekä varoista ja veloista. - tehty
 - Lisäksi näkyy yhteenveto- ja tilastotietoa. - tehty
 - Alhaalla on nappeja, josta pääsee lisäämään tai poistamaan budjettirivejä. - tehty
+- Mahdollisuus olemassaolevien rivien muokkaamiseen. - tehty
 - Sovelluksesta pääsee kirjautumaan ulos. - tehty
 
 ## Jatkokehitysideoita
@@ -35,6 +36,5 @@ Mikäli aikaa riittää, sovellusta kehitetään esim:
 - Toteumien tuominen sovellukseen (toteutuneet tulot ja menot, varat ja velat)
     - Käyttäjä syöttää tiedoston sovellukseen (pitää olla tietyssä formaatissa, joka ohjeistettu)
     - Tällöin päänäkymässä näkyy sekä budjetit että toteumat, jonka avulla käyttäjä voi tehdä analyysia sekä adjustoida budjettejaan
-- Mahdollisuus olemassaolevien rivien muokkaamiseen
 - Budjettirivien yhteyteen kommentointiominaisuus, eli tiettyä budjettiriviä voisi kommentoida
 - Toiminnallisuus useamman budjetin luomiseen per käyttäjä

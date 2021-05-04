@@ -3,6 +3,7 @@ from logic import ask_budget_command
 from logic import handle_existing_user
 from logic import handle_new_user
 from logic import add_new_budget_row
+from logic import modify_existing_budget_row
 from logic import delete_existing_budget_row
 from logic import printable_budget_by_group
 from logic import printable_budget_by_group_with_ids
@@ -60,6 +61,19 @@ def run_budget_ui(db, userid):
             print("---Budjettirivit ja id:t---")
             [print(printable_budget_by_group_with_ids(group, item)) for (group, item) in [("Tulot", revenues), ("Menot", expenses), ("Varat", assets), ("Velat", liabilities)]]
             
+            success, classification, modify_id, new_amount = modify_existing_budget_row(db, userid)
+            if success:
+                revenues, expenses, assets, liabilities = get_budgets_by_group(db, userid)
+                
+                print("\n---Tämänhetkinen BUDJETTI---\n")
+                [print(printable_budget_by_group(group, item)) for (group, item) in [("Tulot", revenues), ("Menot", expenses), ("Varat", assets), ("Velat", liabilities)]]
+                print("Nettotulot:", calculate_net(revenues, expenses))
+                print("Nettovarat:", calculate_net(assets, liabilities) + "\n")
+        
+        elif cmd == "3":
+            print("---Budjettirivit ja id:t---")
+            [print(printable_budget_by_group_with_ids(group, item)) for (group, item) in [("Tulot", revenues), ("Menot", expenses), ("Varat", assets), ("Velat", liabilities)]]
+            
             success, classification, remove_id = delete_existing_budget_row(db, userid)
             if success:
                 if classification == "Tulot":
@@ -76,5 +90,5 @@ def run_budget_ui(db, userid):
                 print("Nettotulot:", calculate_net(revenues, expenses))
                 print("Nettovarat:", calculate_net(assets, liabilities) + "\n")
 
-        elif cmd == "3":
+        elif cmd == "4":
             run_login_ui(db)
