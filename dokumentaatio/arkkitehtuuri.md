@@ -12,7 +12,7 @@ Ohjelman rakenne koostuu neljästä moduulista seuraavasti:
 ## Käyttöliittymä
 
 Ohjelmassa on kaksi käyttöliittymänäkymää, kirjautumisnäkymä sekä budjettinäkymä:
-<img src="https://github.com/henkkah/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/arkkitehtuuri.PNG" width="500"> 
+<img src="https://github.com/henkkah/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/kayttoliittymaluonnos.PNG" width="500">  
 - Kirjautumisnäkymässä käyttäjä kirjautuu sovellukseen käyttäjätunnuksellaan sekä salasanallaan.
 - Budjettinäkymässään käyttäjä näkee luomansa budjetin, sekä pystyy lisäämään ja poistamaan rivejä.
 
