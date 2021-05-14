@@ -47,6 +47,12 @@ def get_budgets_by_group(db, userid):
 
     return (revenues, expenses, assets, liabilities)
 
+def get_budget_of_group(db, userid, group):
+    budget_items = db.execute("SELECT * FROM BudgetItems WHERE userid=? AND classification=?", [userid, group]).fetchall()
+    budget_items = [(item[1], item[2], item[0]) for item in budget_items] # Items ordered: Classification, Name, Amount, Id
+
+    return budget_items
+
 def get_userid_of_username(db, username):
     """Fetches userid of the given username from the given database.
     
@@ -72,6 +78,19 @@ def get_password_of_username(db, username):
     """
     
     return db.execute("SELECT password FROM Users WHERE username=?", [username]).fetchone()[0]
+
+def get_username_of_userid(db, userid):
+    """Fetches username of the given userid from the given database.
+    
+    Args:
+        db: database where data of the application is stored
+        userid: userid of the handled user
+    
+    Returns:
+        username of the given userid
+    """
+    
+    return db.execute("SELECT username FROM Users WHERE id=?", [userid]).fetchone()[0]
 
 def search_for_username(db, username):
     """Searches whether given username exists in given database.

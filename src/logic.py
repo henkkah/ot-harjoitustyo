@@ -6,8 +6,11 @@ from db import add_new_budget_row_to_db
 from db import get_classification_of_budget_item
 from db import modify_budget_row
 from db import delete_budget_row
+import tkinter.messagebox
+import tkinter.simpledialog
 
-def ask_login_command(cmd=""):
+'''
+def ask_login_command_tui(cmd=""):
     """Asks command from user in login view.
     
     Asks command until user gives a valid input (1, 2 or 3).
@@ -25,7 +28,7 @@ def ask_login_command(cmd=""):
             print("Anna komento 1, 2 tai 3")
     return cmd
 
-def ask_budget_command(cmd=""):
+def ask_budget_command_tui(cmd=""):
     """Asks command from user in budget view.
     
     Asks command until user gives a valid input (1, 2, 3 or 4).
@@ -100,8 +103,63 @@ def handle_new_user(db, username="", password=""):
     userid = row.lastrowid
     
     return (True, userid)
+'''
 
-def add_new_budget_row(db, userid, classification="", name="", amount=""):
+def handle_existing_user(db, username, password):
+    """Checks that username exists in the database.
+
+    Also checks that password is correct for the corresponding username.
+
+    Args:
+        db: database where data is stored
+        username: username given by the user in gui
+        password: password given by the user in gui
+    
+    Returns:
+        True (if user was authenticated successfully) & userid (of the existing user) & error (if username of password is incorrect).
+    """
+    
+    try:
+        userid = get_userid_of_username(db, username)
+    except:
+        return (False, None, "Käyttäjätunnusta ei ole olemassa!")
+    
+    if get_password_of_username(db, username) != password:
+        return (False, None, "Väärä salasana!")
+    
+    return (True, userid, None)
+
+def handle_new_user(db, username, password):
+    """Checks that username does not exist in the database.
+
+    After this, creates new user to the database with the password given.
+
+    Args:
+        db: database where data is stored
+        username: username given by the user in gui
+        password: password given by the user in gui
+    
+    Returns:
+        True (if user was authenticated successfully) & userid (of the new user) & error (if username of password is incorrect).
+    """
+    
+    try:
+        if search_for_username(db, username) == username:
+            return (False, None, "Käyttäjätunnus on jo käytössä")
+    except:
+        if username == "":
+            return (False, None, "Tyhjä käyttäjätunnus")
+        else:
+            pass
+    
+    row = add_new_user(db, username, password)
+    userid = row.lastrowid
+    
+    return (True, userid, None)
+
+
+
+def add_new_budget_row(db, userid, classification, name, amount):
     """Asks classification, budget item name and budget sum from the user until user gives valid input.
 
     After this, inserts new budget row with the given input to the database.
@@ -118,7 +176,7 @@ def add_new_budget_row(db, userid, classification="", name="", amount=""):
         - amount of the budget row (budget sum)
         - budget_id (id of the inserted budget row)
     """
-    
+    '''
     class_given = False
     while not class_given:
         classification = input("Anna luokka (Tulot/Menot/Varat/Velat): ") # To be developed: Chosen from dropdown list - cannot give incorrect value
@@ -137,11 +195,13 @@ def add_new_budget_row(db, userid, classification="", name="", amount=""):
             amount_valid = True
         except:
             print("Annoit budjettisumman väärässä muodossa")
-    
+    '''
     row = add_new_budget_row_to_db(db, name, amount, classification, userid)
     budget_id = row.lastrowid
     
     return (True, classification, name, amount, budget_id)
+
+
 
 def modify_existing_budget_row(db, userid):
     """Asks budget row id and new amount from the user until user gives valid input.
@@ -181,7 +241,7 @@ def modify_existing_budget_row(db, userid):
     modify_budget_row(db, userid, int(modify_id), new_amount)
     return (True, classification, modify_id, new_amount)
 
-def delete_existing_budget_row(db, userid):
+def delete_existing_budget_row(db, userid, remove_id):
     """Asks budget row id and new amount from the user until user gives valid input.
 
     After this, modifies corresponding budget row in the database.
@@ -197,15 +257,8 @@ def delete_existing_budget_row(db, userid):
         - remove_id (id of the removed budget row)
     """
     
-    id_valid = False
-    while not id_valid:
-        remove_id = input("Anna rivin id-numero jonka haluat poistaa: ")
-        try:
-            classification = get_classification_of_budget_item(db, userid, int(remove_id))
-            delete_budget_row(db, userid, int(remove_id))
-            id_valid = True
-        except:
-            print("Et antanut oikeaa id:tä")
+    classification = get_classification_of_budget_item(db, userid, remove_id)
+    delete_budget_row(db, userid, remove_id)
     
     return (True, classification, remove_id)
 
