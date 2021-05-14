@@ -10,4 +10,5 @@
 | 9.5.  |  2.0 | Graafisen käyttöliittymän teon opettelua tkinterillä                                          |
 | 11.5. |  3.0 | Graafisen käyttöliittymän tekoa                                                               |
 | 12.5. |  4.5 | Graafisen käyttöliittymän tekoa                                                               |
-| yht.  | 26.5 |                                                                                               |
+| 14.5. |  4.5 | Gui:n viimeistelyä, dokumentaation viimeistelyä, testausta                                    |
+| yht.  | 31.0 |                                                                                               |

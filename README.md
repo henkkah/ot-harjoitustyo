@@ -1,4 +1,4 @@
-# BudgetApp
+# BudjetointiSovellus
 Sovelluksen käyttäjä voi budjetoida henkilökohtaisen taloutensa tulot ja menot sekä varat ja velat.  
 Sovellukseen kirjaudutaan, minkä ansiosta eri käyttäjillä on omat budjettinsa.  
 
