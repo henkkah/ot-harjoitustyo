@@ -10,7 +10,7 @@ Sovelluksen automatisoitu testauskattavuus on 48%.
 logic.py on testattu tärkeimpien toimintojen osalta.  
 db.py:sta ei ole testattu kaikkea, sillä moni toiminto on yksinkertainen tietokantakysely.  
 Ohjelmaa ajamalla on huomattu että tietokantakomennot toimivat oikein.  
-<img src="https://github.com/henkkah/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/testauskattavuus.PNG" width="150">  
+<img src="https://github.com/henkkah/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/testauskattavuus.PNG" width="750">  
 
 # Järjestelmätestaus
 Sovelluksen järjestelmätestaus on tehty manuaalisesti.  
